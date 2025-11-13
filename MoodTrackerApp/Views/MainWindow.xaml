@@ -7,6 +7,78 @@
         mc:Ignorable="d"
         Title="Дневник настроения" Height="600" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<summary>
+        Меню
+        </summary>-->
+        <Menu Grid.Row="0">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Добавить запись" Click="AddEntry_Click"/>
+                <Separator/>
+                <MenuItem Header="Экспорт в CSV" Click="ExsportCsv_Click"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Статистика" Click="Statistics_Click"/>
+            </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="О программе" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+        <!--<summary>
+        Панель фильтрации
+        </summary>-->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10" Background="#F0F0F0">
+            <TextBlock Text="Фильтр по дате:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <DatePicker x:Name="StartDatePicker" Width="120" Margin="0,0,10,0"/>
+            <TextBlock Text="по" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <DatePicker x:Name="EndDatePicker" Width="120" Margin="0,0,10,0"/>
+            <Button Content="Применить фильтр" Click="ApplyFilter_Click" Margin="0,0,10,0"/>
+            <Button Content="Сбросить фильтр" Click="ResetFilter_Click"/>
+        </StackPanel>
+        <!--<summary>
+        Основное содержимое
+        </summary>-->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+        <!--<summary>
+        Панель управления
+        </summary>-->
+            <StackPanel Grid.Column="0" Margin="10">
+                <Button Content="Добавить запись" Height="30" Click="AddEntry_Click"/>
+                <Button Content="Обновить" Height="30" Click="Refresh_Click" Margin="0,5,0,0"/>
+                <Button Content="Показать статистику" Height="30" Margin="0,5,0,0" Click="Statistics_Click"/>
+                <Button Content="Экспорт в CSV" Height="30" Margin="0,5,0,0" Click="Export_Click"/>
+                <TextBlock Text="Статистика:" Margin="0,20,0,5" FontWeight="Bold"/>
+                <TextBlock x:Name="StatsText" TextWrapping="Wrap"/>
+            </StackPanel>
+        <!--<summary>
+        Список записей
+        </summary>-->
+            <DataGrid x:Name="EntriesGrid" Grid.Column="1" Margin="10" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding EntryDate, StringFormat='dd.MM.yyyy HH:mm'}" Width="120"/>
+                    <DataGridTextColumn Header="Настроение" Binding="{Binding MoodDescription}" Width="100"/>
+                    <DataGridTextColumn Header="Заметки" Binding="{Binding Notes}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <!--<summary>
+        Статус бар
+        </summary>-->
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock x:Name="StatusText" Text="Готов"/>
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
