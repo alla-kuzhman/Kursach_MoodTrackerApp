@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using MoodTrackerApp.Models;
+using MoodTrackerApp.Services;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MoodTrackerApp.Models;
-using MoodTrackerApp.Services;
 
 namespace MoodTrackerApp.Views
 {
@@ -42,20 +33,20 @@ namespace MoodTrackerApp.Views
 
             for (int i = 0; i < 24; i++)
             {
-                HourComboBox.Items.Add(i.ToString("00"));
+                HourComoboBox.Items.Add(i.ToString("00"));
             }
             for (int i = 0; i < 60; i++)
             {
                 MinuteComboBox.Items.Add(i.ToString("00"));
             }
-            HourComboBox.SelectedItem = now.Hour.ToString("00");
+            HourComoboBox.SelectedItem = now.Hour.ToString("00");
             MinuteComboBox.SelectedItem = now.Minute.ToString("00");
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             if (DatePicker.SelectedDate == null ||
                 MoodComboBox.SelectedItem == null ||
-                HourComboBox.SelectedItem == null ||
+                HourComoboBox.SelectedItem == null ||
                 MinuteComboBox.SelectedItem == null)
             {
                 MessageBox.Show("Заполните все обязательные поля");
@@ -64,7 +55,7 @@ namespace MoodTrackerApp.Views
             try
             {
                 var selectedDate = DatePicker.SelectedDate.Value;
-                int hour = int.Parse(HourComboBox.SelectedItem.ToString());
+                int hour = int.Parse(HourComoboBox.SelectedItem.ToString());
                 int minute = int.Parse(MinuteComboBox.SelectedItem.ToString());
 
                 var entryDateTime = new DateTime(

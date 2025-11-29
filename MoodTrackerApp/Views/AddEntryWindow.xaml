@@ -57,7 +57,5 @@
             <Button Content="Сохранить" Width="80" Margin="0,0,10,0" Click="Save_Click"/>
             <Button Content="Отмена" Width="80" Click="Cancel_Click"/>
         </StackPanel>
-
-
     </Grid>
 </Window>
