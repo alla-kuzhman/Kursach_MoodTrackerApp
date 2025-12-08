@@ -29,7 +29,7 @@ namespace MoodTrackerApp.Views
         private void InitializeDateTime()
         {
             var now = DateTime.Now;
-            DatePicker.SelectedDate = now;
+            DataPicker.SelectedDate = now;
 
             for (int i = 0; i < 24; i++)
             {
@@ -44,7 +44,7 @@ namespace MoodTrackerApp.Views
         }
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            if (DatePicker.SelectedDate == null ||
+            if (DataPicker.SelectedDate == null ||
                 MoodComboBox.SelectedItem == null ||
                 HourComoboBox.SelectedItem == null ||
                 MinuteComboBox.SelectedItem == null)
@@ -54,7 +54,7 @@ namespace MoodTrackerApp.Views
             }
             try
             {
-                var selectedDate = DatePicker.SelectedDate.Value;
+                var selectedDate = DataPicker.SelectedDate.Value;
                 int hour = int.Parse(HourComoboBox.SelectedItem.ToString());
                 int minute = int.Parse(MinuteComboBox.SelectedItem.ToString());
 

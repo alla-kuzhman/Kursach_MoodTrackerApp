@@ -1,4 +1,5 @@
 ﻿using MoodTrackerApp.Services;
+using MoodTrackerApp.Utilities;
 using MoodTrackerApp.Views;
 using System;
 using System.Collections.Generic;
@@ -98,13 +99,13 @@ namespace MoodTrackerApp
             StatusText.Text = "Данные обновлены";
         }
 
-        private void ShowStatistics_Click(object sender, RoutedEventArgs e)
+        private void Statistics_Click(object sender, RoutedEventArgs e)
         {
             var statsWindow = new StatisticsWindow(_moodService, _filterStartDate, _filterEndDate);
             statsWindow.ShowDialog();
         }
 
-        private void ExportCsv_Click(object sender, RoutedEventArgs e)
+        private void Export_Click(object sender, RoutedEventArgs e)
         {
             var entries = _moodService.GetEntriesByDateRange(_filterStartDate, _filterEndDate);
             var exporter = new CsvExporter();
@@ -140,8 +141,5 @@ namespace MoodTrackerApp
         {
             Close();
         }
-    }
-}
-
     }
 }
