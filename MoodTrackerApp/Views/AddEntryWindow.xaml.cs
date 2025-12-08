@@ -17,6 +17,10 @@ namespace MoodTrackerApp.Views
         {
             InitializeComponent();
             _moodService = new MoodService();
+            /// <summary>
+            /// Инициализирует элементы управления датой и временем
+            /// Устанавливает текущую дату и заполняет ComboBox для часов и минут
+            /// </summary>
             InitializeDateTime();
             /// <summary>
             /// Нейтральное по умолчанию настроение

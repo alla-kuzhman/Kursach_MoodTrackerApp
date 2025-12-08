@@ -16,11 +16,11 @@
         <!--<summary>
         Меню
         </summary>-->
-        <Menu Grid.Row="0">
+        <Menu Grid.Row="0" x:Name="MainMenu">
             <MenuItem Header="Файл">
-                <MenuItem Header="Добавить запись" Click="AddEntry_Click"/>
+                <MenuItem x:Name="AddMenuItem" Header="Добавить запись" Click="AddEntry_Click"/>
                 <Separator/>
-                <MenuItem Header="Экспорт в CSV" Click="ExsportCsv_Click"/>
+                <MenuItem Header="Экспорт в CSV" Click="Export_Click"/>
                 <Separator/>
                 <MenuItem Header="Выход" Click="Exit_Click"/>
             </MenuItem>
@@ -54,12 +54,27 @@
         Панель управления
         </summary>-->
             <StackPanel Grid.Column="0" Margin="10">
-                <Button Content="Добавить запись" Height="30" Click="AddEntry_Click"/>
+                <Button x:Name="AddButton" Content="Добавить запись" Height="30" Click="AddEntry_Click"/>
                 <Button Content="Обновить" Height="30" Click="Refresh_Click" Margin="0,5,0,0"/>
+                <TextBlock Text="Режимы работы:" Margin="0,20,0,5" FontWeight="Bold"/>
+                <Button x:Name="ViewModeButton" Content="Режим просмотра" Height="30" 
+            Click="ViewModeButton_Click" Margin="0,5,0,0" Background="LightGreen"/>
+                <Button x:Name="EditModeButton" Content="Режим редактирования" Height="30" 
+            Click="EditModeButton_Click" Margin="0,5,0,0" Background="LightYellow"/>
+                
                 <Button Content="Показать статистику" Height="30" Margin="0,5,0,0" Click="Statistics_Click"/>
                 <Button Content="Экспорт в CSV" Height="30" Margin="0,5,0,0" Click="Export_Click"/>
                 <TextBlock Text="Статистика:" Margin="0,20,0,5" FontWeight="Bold"/>
                 <TextBlock x:Name="StatsText" TextWrapping="Wrap"/>
+                
+                <Button x:Name="DeleteButton" Content="Удалить выбранное" 
+        Height="30" Click="DeleteButton_Click" Margin="0,5,0,5"/>
+                <Button x:Name="SaveEditButton" Content="Сохранить изменения" 
+        Height="30" Click="SaveEditButton_Click" Margin="0,5,0,5" 
+        Visibility="Collapsed"/>
+                <Button x:Name="CancelEditButton" Content="Отменить редактирование" 
+        Height="30" Click="CancelEditButton_Click" Margin="0,5,0,10" 
+        Visibility="Collapsed"/>
             </StackPanel>
         <!--<summary>
         Список записей

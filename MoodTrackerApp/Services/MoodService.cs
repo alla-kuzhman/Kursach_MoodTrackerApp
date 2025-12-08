@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace MoodTrackerApp.Services
 {
+    /// <summary>
+    /// Класс MoodService реализует паттерн "Фасад"
+    /// Предоставляет простой интерфейс для работы с записями настроения,
+    /// скрывая сложность работы с базой данных и DatabaseHelper
+    /// </summary>
     public class MoodService
     {
         private DatabaseHelper _dbHelper;
@@ -147,6 +152,27 @@ namespace MoodTrackerApp.Services
             }
 
             return entries;
+        }
+        /// <summary>
+        /// Удаляет запись о настроении по идентификатору
+        /// </summary>
+        public bool DeleteMoodEntry(int id)
+        {
+            try
+            {
+                using (var connection = _dbHelper.GetConnection())
+                {
+                    connection.Open();
+                    string query = "DELETE FROM MoodEntries WHERE Id = @Id";
+
+                    using (var command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Id", id);
+                        return command.ExecuteNonQuery() > 0;
+                    }
+                }
+            }
+            catch { return false; }
         }
     }
 }

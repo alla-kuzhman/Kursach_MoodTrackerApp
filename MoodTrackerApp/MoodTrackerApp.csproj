@@ -74,6 +74,9 @@
     <Compile Include="Data\DatabaseHelper.cs" />
     <Compile Include="Models\MoodEntry.cs" />
     <Compile Include="Services\MoodService.cs" />
+    <Compile Include="States\EditState.cs" />
+    <Compile Include="States\State.cs" />
+    <Compile Include="States\ViewState.cs" />
     <Compile Include="Utilities\CsvExporter.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\StatisticsWindow.xaml.cs">
